@@ -263,8 +263,14 @@ function assignRoles() {
 
 function makePlayerX() {
     player = x;
-    playerTwo = o;
-    computer = o;
+    if (who === 0) {
+        playerTwo = o;
+        whoseTurn = player;
+    } else if (who === 1) {
+        computer = o;
+        playerTwo = a;
+        whoseTurn = computer;
+    }
     whoseTurn = player;
     playerText = xText;
     playerTwoText = oText;
@@ -278,15 +284,18 @@ function makePlayerO() {
     player = o;
     if (who === 0) {
         playerTwo = x;
-        whoseTurn = player;
+        whoseTurn = playerTwo;
     } else if (who === 1) {
     computer = x;
+    playerTwo = a;
     whoseTurn = computer;
     }
     playerText = oText;
     playerTwoText = xText;
     computerText = xText;
-    setTimeout(makeComputerMove, 400);
+    if (who === 1) {
+        setTimeout(makeComputerMove, 400);
+    }
     document.getElementById("userFeedback").style.display = "none";
     document.getElementById("yesBtn").removeEventListener("click", makePlayerX);
     document.getElementById("noBtn").removeEventListener("click", makePlayerO);
@@ -354,13 +363,15 @@ function restartGame(ask) {
         document.getElementById(id).classList.remove("win-color");
     }
     if (ask === true) {
-        // setTimeout(assignRoles, 200);
+       // setTimeout(assignRoles, 200);
         setTimeout(showOptions, 200);
-    } else if (whoseTurn === player || whoseTurn === playerTwo) {
+    }
+    if (whoseTurn === player || whoseTurn === playerTwo) {
         document.getElementsByClassName("modal").display = 'block';
     }else if (whoseTurn === computer) {
         setTimeout(makeComputerMove, 800);
     }
+
 }
 
 // The core logic of the game AI:
@@ -611,12 +622,15 @@ function getOptions() {
         who = 0;
         player = x;
         playerTwo = o;
+        computer = a;
         whoseTurn = player;
         playerText = xText;
         playerTwoText = oText;
     } else {
             if (document.getElementById('rx').checked === true) {
+                who = 1;
                 player = x;
+                playerTwo = a;
                 computer = o;
                 whoseTurn = player;
                 playerText = xText;
