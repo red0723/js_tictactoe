@@ -1,7 +1,4 @@
 body {
-    /*background: rgb(2,0,36);*/
-    /*background: linear-gradient(60deg, rgba(2,0,36,1) 50%, rgba(9,9,121,1) 75%, rgba(0,212,255,1) 100%);*/
-    /*color: rgb(230, 230, 230);*/
     background-image: url("https://wallpapertag.com/wallpaper/full/b/5/4/449750-popular-cool-nature-backgrounds-2262x1504-for-phones.jpg");
     background-position: center;
     background-size: cover;
@@ -11,7 +8,16 @@ body {
     color-rendering: optimizeQuality;
 }
 
+.date {
+    color: blue;
+    font-size: 30px;
+    font-style: unset;
+    font-family: 'Indie Flower', 'Comic Sans', cursive;
+    font-weight: bold;
+}
+
 h1 {
+    color: blue;
     color-rendering: optimizeQuality;
     line-height: 1em;
     margin-bottom: 0;

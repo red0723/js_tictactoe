@@ -17,6 +17,13 @@ window.onclick = function (evt) {
     }
 };
 
+function showDateTime() {
+    var date = new Date();
+    var timezone =  Intl.DateTimeFormat().resolvedOptions().timeZone;
+    var timez = WScript.CreateObject(WScript.DateTimeFormat(timezone));
+    document.getElementById('date').innerHTML = date.toLocaleDateString("en-US") + " - " + date.toLocaleTimeString("en-US") + " " + timezone;
+    window.requestAnimationFrame(showDateTime);
+}
 //==================================
 // HELPER FUNCTIONS
 //==================================
@@ -249,9 +256,8 @@ function initialize() {
     for (var i = 0; i <= myGrid.cells.length - 1; i++) {
         myGrid.cells[i] = 0;
     }
-    // setTimeout(assignRoles, 500);
     setTimeout(showOptions, 500);
-    // debugger;
+    showDateTime();
 }
 
 // Ask player if they want to play as X or O. X goes first.
